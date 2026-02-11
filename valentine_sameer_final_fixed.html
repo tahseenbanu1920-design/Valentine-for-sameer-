@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tahseen ❤️ Sameer</title>
+
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ffc0cb,#ff9eb5,#ffb6c1);
+overflow:hidden;
+text-align:center;
+color:white;
+}
+
+#hearts span{
+position:absolute;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
+.container{
+margin-top:18vh;
+position:relative;
+z-index:2;
+}
+
+#question{
+font-size:2em;
+min-height:60px;
+}
+
+button{
+padding:12px 26px;
+font-size:18px;
+border:none;
+border-radius:30px;
+margin:10px;
+cursor:pointer;
+}
+
+#yes{
+background:white;
+color:#ff4d6d;
+}
+
+#no{
+background:#ff4d6d;
+color:white;
+}
+
+#gift{
+font-size:70px;
+display:none;
+cursor:pointer;
+animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+}
+
+#message{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+background:white;
+color:#ff4d6d;
+padding:25px;
+border-radius:20px;
+width:85%;
+max-width:420px;
+animation:pop 0.6s forwards;
+z-index:20;
+}
+
+@keyframes pop{
+to{transform:translate(-50%,-50%) scale(1);}
+}
+
+/* FIXED rabbit center overlay */
+#rabbitOverlay{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:15;
+text-align:center;
+}
+
+#rabbitOverlay img{
+width:180px;
+}
+
+#rabbitText{
+background:white;
+color:#ff4d6d;
+padding:12px;
+border-radius:12px;
+margin-top:10px;
+font-size:15px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.balloon{
+position:absolute;
+bottom:-100px;
+font-size:28px;
+animation:balloonUp 6s linear infinite;
+}
+
+@keyframes balloonUp{
+0%{transform:translateY(0);}
+100%{transform:translateY(-120vh);}
+}
+
+#cartoon{
+width:180px;
+margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<div class="container">
+<div id="question"></div>
+
+<button id="yes" onclick="showGift()">Yes ❤️</button>
+<button id="no" onclick="showRabbit()">No 💔</button>
+
+<div id="gift" onclick="openGift()">🎁</div>
+</div>
+
+<div id="rabbitOverlay">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Emoji_u1f430.svg/512px-Emoji_u1f430.svg.png">
+<div id="rabbitText">
+Nice try baby, but you belong to me, so choose Yes ❤️
+</div>
+</div>
+
+<div id="message">
+<p id="msgText"></p>
+<img id="cartoon" src="https://cdn.pixabay.com/photo/2021/02/13/13/09/couple-6012253_960_720.png">
+</div>
+
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/9xG5aPvrS-k?autoplay=1&loop=1&playlist=9xG5aPvrS-k">
+</iframe>
+
+<script>
+
+// typing question
+let q="Sameer, will you be my Valentine? ❤️";
+let i=0;
+function typeQ(){
+if(i<q.length){
+document.getElementById("question").innerHTML+=q.charAt(i);
+i++;
+setTimeout(typeQ,50);
+}
+}
+typeQ();
+
+// hearts
+for(let i=0;i<20;i++){
+let heart=document.createElement("span");
+heart.innerHTML="💕";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+document.getElementById("hearts").appendChild(heart);
+}
+
+function showRabbit(){
+document.getElementById("rabbitOverlay").style.display="block";
+}
+
+function showGift(){
+document.getElementById("gift").style.display="block";
+createBalloons();
+}
+
+function openGift(){
+document.getElementById("message").style.display="block";
+typeMessage();
+}
+
+let msg="You came into my life so quietly, but you became the most beautiful part of it. Before you, I never knew a person could feel like home, but with you, I feel safe, understood, and truly loved. You are my today, my tomorrow, and my forever. Forever yours, Tahseen ❤️";
+let j=0;
+
+function typeMessage(){
+if(j<msg.length){
+document.getElementById("msgText").innerHTML+=msg.charAt(j);
+j++;
+setTimeout(typeMessage,30);
+}
+}
+
+function createBalloons(){
+for(let i=0;i<25;i++){
+let b=document.createElement("div");
+b.className="balloon";
+b.innerHTML="🎈";
+b.style.left=Math.random()*window.innerWidth+"px";
+document.body.appendChild(b);
+}
+}
+
+</script>
+
+</body>
+</html>
